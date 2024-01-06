@@ -42,4 +42,10 @@ return [
         'client_secret' => env('LINKEDIN_SECRET_ID'),
         'redirect' => 'https://124scalelife.com.test/auth/linkedin/callback'
     ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_SECRET_ID'),
+        'redirect' => 'https://124scalelife.com.test/auth/facebook/callback'
+    ],
 ];
