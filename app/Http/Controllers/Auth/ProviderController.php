@@ -7,6 +7,7 @@ use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Str;
 
 class ProviderController extends Controller
 {
@@ -24,11 +25,11 @@ class ProviderController extends Controller
 
         if ($provider === 'linkedin') {
             $provider = $provider.'-openid'; // redirect returns 'linkedin' and not 'linkedin-openid' like it should
-            $username = \Str::random(15); // linkedin doesn't have a username, this is required for our codebase
+            $username = Str::random(15); // linkedin doesn't have a username, this is required for our codebase
         }
 
         if ($provider === 'facebook') {
-            $username = \Str::random(15); // facebook doesn't have a username, this is required for our codebase
+            $username = Str::random(15); // facebook doesn't have a username, this is required for our codebase
         }
 
         try {
@@ -46,6 +47,8 @@ class ProviderController extends Controller
                     'last_name' => $name[1],
                     'display_name' => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
+                    'password' => bcrypt(Str::random(15)),
+                    // random password, we don't need it since we're using socialite
                     'provider_id' => $socialUser->getId(),
                     'provider' => $provider,
                     'provider_token' => $socialUser->token,
