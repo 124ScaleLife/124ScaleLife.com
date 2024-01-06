@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 
-Route::get('auth/{provider}/callback', [ProviderController::class, 'callback']);
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::middleware([
     'auth:sanctum',
