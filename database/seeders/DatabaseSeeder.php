@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'David',
             'last_name' => 'Rodriguez',
             'username' => 'enyutech',
+            'display_name' => 'David Rodriguez',
             'role' => User::SUPER_ADMIN,
             'email' => 'david@enyutech.com',
             'password' => bcrypt('password')
